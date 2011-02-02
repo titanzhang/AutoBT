@@ -20,7 +20,7 @@
                 <action android:name="com.titanzhang.AutoBTSettingsActivity.ACTION_BOOT_LOAD"></action>
             </intent-filter>
         </activity>
-        <receiver android:label="@string/booter_name" android:name="BroadcastReceiver.BootReceiver">
+        <receiver android:label="@string/booter_name" android:name=".BroadcastReceiver.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
