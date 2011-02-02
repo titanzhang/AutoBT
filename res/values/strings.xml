@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoBT</string>
+    <string name="EnableCheckboxText">Enable Service</string>
+    <string name="MsgServiceRunning">Service Running</string>
+    <string name="MsgServiceStopped">Service Stopped</string>
+    <string name="booter_name">AutoBTBooter</string>
+    <string name="MsgBootEnable">AutoBT started</string>
+</resources>
