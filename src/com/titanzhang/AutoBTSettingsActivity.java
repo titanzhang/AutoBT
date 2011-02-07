@@ -1,12 +1,14 @@
 package com.titanzhang;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
+import com.titanzhang.Services.MainService;
 import com.titanzhang.common.AutoBTUtil;
 
 public class AutoBTSettingsActivity extends Activity {
@@ -25,10 +27,10 @@ public class AutoBTSettingsActivity extends Activity {
 		boolean perfEnabled = AutoBTUtil.readPreference(this);
 		if (perfEnabled) {
 			enableCheckBox.setChecked(true);
-//			AutoBTUtil.registerPhoneReceivers(getApplicationContext());
+			startMainService();
 		} else {
 			enableCheckBox.setChecked(false);
-			AutoBTUtil.unregisterPhoneReceivers(getApplicationContext());
+			stopMainService();
 		}
 		enableCheckBox
 				.setOnCheckedChangeListener(new ServiceEnableCheckBoxChangeListener());
@@ -44,6 +46,16 @@ public class AutoBTSettingsActivity extends Activity {
 		Log.d("===[AutoBTSettingsActivity]===", message);
 	}
 
+	private void startMainService() {
+		Intent serviceIntent = new Intent(getApplicationContext(), MainService.class);
+		getApplicationContext().startService(serviceIntent);
+	}
+	
+	private void stopMainService() {
+		Intent serviceIntent = new Intent(getApplicationContext(), MainService.class);
+		getApplicationContext().stopService(serviceIntent);
+	}
+	
 	private class ServiceEnableCheckBoxChangeListener implements
 			OnCheckedChangeListener {
 
@@ -51,20 +63,12 @@ public class AutoBTSettingsActivity extends Activity {
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			if (isChecked) {
 				logMessage("register receiver");
-				AutoBTUtil.registerPhoneReceivers(getApplicationContext());
 				AutoBTUtil.savePreference(AutoBTSettingsActivity.this, true);
-				AutoBTUtil.showNotifyMessage(AutoBTSettingsActivity.this,
-						getText(R.string.app_name),
-						getText(R.string.MsgServiceRunning),
-						false);
+				startMainService();
 			} else {
 				logMessage("unregister receiver");
-				AutoBTUtil.unregisterPhoneReceivers(getApplicationContext());
 				AutoBTUtil.savePreference(AutoBTSettingsActivity.this, false);
-				AutoBTUtil.showNotifyMessage(AutoBTSettingsActivity.this,
-						getText(R.string.app_name),
-						getText(R.string.MsgServiceStopped),
-						true);
+				stopMainService();
 			}
 			AutoBTSettingsActivity.this.finish();
 		}

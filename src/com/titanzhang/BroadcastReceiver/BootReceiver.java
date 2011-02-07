@@ -1,10 +1,10 @@
 package com.titanzhang.BroadcastReceiver;
 
-import com.titanzhang.AutoBTBootActivity;
-
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.titanzhang.Services.MainService;
+import com.titanzhang.common.AutoBTUtil;
 
 public class BootReceiver extends AbstractBaseReceiver {
 
@@ -12,9 +12,12 @@ public class BootReceiver extends AbstractBaseReceiver {
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
 		if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
-			Intent activityIntent = new Intent(context, AutoBTBootActivity.class);
-			activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.getApplicationContext().startActivity(activityIntent);
+			// Check Service Status
+			boolean perfEnabled = AutoBTUtil.readPreference(context.getApplicationContext());
+			if (perfEnabled) {
+				Intent serviceIntent = new Intent(context, MainService.class);
+				context.startService(serviceIntent);
+			}
 		}
 	}
 

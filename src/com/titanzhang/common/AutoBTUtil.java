@@ -1,12 +1,5 @@
 package com.titanzhang.common;
 
-import com.titanzhang.AutoBTSettingsActivity;
-import com.titanzhang.R;
-import com.titanzhang.BroadcastReceiver.Manager.CallAnswerManager;
-import com.titanzhang.BroadcastReceiver.Manager.PhoneStateManager;
-import com.titanzhang.R.drawable;
-
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,6 +7,12 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+
+import com.titanzhang.AutoBTSettingsActivity;
+import com.titanzhang.R;
+import com.titanzhang.BroadcastReceiver.Manager.CallAnswerManager;
+import com.titanzhang.BroadcastReceiver.Manager.PhoneStateManager;
 
 public class AutoBTUtil {
 	private static final String PREFERENCE_NAME = "com.titanzhang.AutoBT";
@@ -21,7 +20,7 @@ public class AutoBTUtil {
 	private static final int PREF_MODE = Context.MODE_WORLD_WRITEABLE;
 
 	public static void savePreference(Context context, boolean bEnableService) {
-		SharedPreferences pref = context.getSharedPreferences(PREFERENCE_NAME, PREF_MODE);
+		SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PREFERENCE_NAME, PREF_MODE);
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putBoolean(PREF_ENABLE_SERVICE, bEnableService);
 		editor.commit();
@@ -29,21 +28,21 @@ public class AutoBTUtil {
 	}
 
 	public static boolean readPreference(Context context) {
-		SharedPreferences pref = context.getSharedPreferences(PREFERENCE_NAME, PREF_MODE);
+		SharedPreferences pref = context.getApplicationContext().getSharedPreferences(PREFERENCE_NAME, PREF_MODE);
 		return pref.getBoolean(PREF_ENABLE_SERVICE, false);
 	}
 	
-	public static void showNotifyMessage(Activity activity, CharSequence title, CharSequence message, boolean canClear) {
-		NotificationManager notifyManager = (NotificationManager)activity.getSystemService(Context.NOTIFICATION_SERVICE);
+	public static void showNotifyMessage(Context context, CharSequence title, CharSequence message, boolean canClear) {
+		NotificationManager notifyManager = (NotificationManager)context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 //		Notification notification = new Notification(R.drawable.icon, message, System.currentTimeMillis());
 		Notification notification = new Notification();
 		notification.icon = R.drawable.icon;
 		notification.tickerText = message;
 		notification.flags = canClear?0:Notification.FLAG_NO_CLEAR;
-		Intent notificationIntent = new Intent(activity, AutoBTSettingsActivity.class);
-		PendingIntent contentIntent = PendingIntent.getActivity(activity, canClear?0:1, notificationIntent, 0);
+		Intent notificationIntent = new Intent(context.getApplicationContext(), AutoBTSettingsActivity.class);
+		PendingIntent contentIntent = PendingIntent.getActivity(context.getApplicationContext(), canClear?0:1, notificationIntent, 0);
 		
-		notification.setLatestEventInfo(activity.getApplicationContext(), title, message, contentIntent);
+		notification.setLatestEventInfo(context.getApplicationContext(), title, message, contentIntent);
 		
 		notifyManager.notify(1, notification);
 	}
@@ -66,6 +65,11 @@ public class AutoBTUtil {
 	public static void unregisterPhoneReceivers(Context context) {
 		PhoneStateManager.getInstance().unregister(context.getApplicationContext());
 		CallAnswerManager.getInstance().unregister(context.getApplicationContext());
+	}
+	
+	public static void showToast(Context context, CharSequence message) {
+		Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+		toast.show();
 	}
 
 }
