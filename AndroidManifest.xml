@@ -10,14 +10,11 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
-        <activity android:name="AutoBTSettingsActivity" android:label="@string/app_name" android:launchMode="singleTask" android:icon="@drawable/icon">
+    <application android:label="@string/app_name" android:debuggable="true" android:icon="@drawable/ic_launcher_app">
+        <activity android:name="AutoBTSettingsActivity" android:label="@string/app_name" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.titanzhang.AutoBTSettingsActivity.ACTION_BOOT_LOAD"></action>
             </intent-filter>
         </activity>
         <receiver android:label="@string/booter_name" android:name=".BroadcastReceiver.BootReceiver">
@@ -25,7 +22,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
-        <service android:name=".Services.MainService" android:icon="@drawable/icon" android:label="@string/app_name">
+        <service android:name=".Services.MainService" android:label="@string/app_name">
         </service>
 
     </application>

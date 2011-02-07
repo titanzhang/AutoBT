@@ -36,7 +36,7 @@ public class AutoBTUtil {
 		NotificationManager notifyManager = (NotificationManager)context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 //		Notification notification = new Notification(R.drawable.icon, message, System.currentTimeMillis());
 		Notification notification = new Notification();
-		notification.icon = R.drawable.icon;
+		notification.icon = canClear?R.drawable.ic_stat_notify_disabled:R.drawable.ic_stat_notify_enabled;
 		notification.tickerText = message;
 		notification.flags = canClear?0:Notification.FLAG_NO_CLEAR;
 		Intent notificationIntent = new Intent(context.getApplicationContext(), AutoBTSettingsActivity.class);
