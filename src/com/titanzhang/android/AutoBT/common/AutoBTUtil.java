@@ -9,8 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.titanzhang.R;
 import com.titanzhang.android.AutoBT.AutoBTSettingsActivity;
+import com.titanzhang.android.AutoBT.R;
 import com.titanzhang.android.AutoBT.BroadcastReceiver.Manager.CallAnswerManager;
 import com.titanzhang.android.AutoBT.BroadcastReceiver.Manager.PhoneStateManager;
 

@@ -6,7 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.titanzhang.R;
+import com.titanzhang.android.AutoBT.R;
 import com.titanzhang.android.AutoBT.common.AutoBTUtil;
 
 public class MainService extends Service {
