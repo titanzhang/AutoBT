@@ -1,4 +1,4 @@
-package com.titanzhang.BroadcastReceiver.Manager;
+package com.titanzhang.android.AutoBT.BroadcastReceiver.Manager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

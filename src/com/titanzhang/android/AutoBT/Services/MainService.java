@@ -1,4 +1,4 @@
-package com.titanzhang.Services;
+package com.titanzhang.android.AutoBT.Services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.titanzhang.R;
-import com.titanzhang.common.AutoBTUtil;
+import com.titanzhang.android.AutoBT.common.AutoBTUtil;
 
 public class MainService extends Service {
 	private boolean m_bStarted = false;

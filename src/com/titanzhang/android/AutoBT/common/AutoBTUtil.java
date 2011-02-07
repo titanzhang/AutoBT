@@ -1,4 +1,4 @@
-package com.titanzhang.common;
+package com.titanzhang.android.AutoBT.common;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,10 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.titanzhang.AutoBTSettingsActivity;
 import com.titanzhang.R;
-import com.titanzhang.BroadcastReceiver.Manager.CallAnswerManager;
-import com.titanzhang.BroadcastReceiver.Manager.PhoneStateManager;
+import com.titanzhang.android.AutoBT.AutoBTSettingsActivity;
+import com.titanzhang.android.AutoBT.BroadcastReceiver.Manager.CallAnswerManager;
+import com.titanzhang.android.AutoBT.BroadcastReceiver.Manager.PhoneStateManager;
 
 public class AutoBTUtil {
 	private static final String PREFERENCE_NAME = "com.titanzhang.AutoBT";

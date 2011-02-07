@@ -1,9 +1,9 @@
-package com.titanzhang.BroadcastReceiver;
+package com.titanzhang.android.AutoBT.BroadcastReceiver;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.titanzhang.common.AutoBTUtil;
+import com.titanzhang.android.AutoBT.common.AutoBTUtil;
 
 public class CallAnswerReceiver extends AbstractBaseReceiver {
 	private static CallAnswerReceiver s_instance = new CallAnswerReceiver();

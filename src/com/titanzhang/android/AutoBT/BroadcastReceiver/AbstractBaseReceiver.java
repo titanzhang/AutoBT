@@ -1,4 +1,4 @@
-package com.titanzhang.BroadcastReceiver;
+package com.titanzhang.android.AutoBT.BroadcastReceiver;
 
 import android.content.BroadcastReceiver;
 import android.util.Log;

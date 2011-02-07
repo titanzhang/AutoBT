@@ -1,10 +1,10 @@
-package com.titanzhang.BroadcastReceiver.Manager;
+package com.titanzhang.android.AutoBT.BroadcastReceiver.Manager;
 
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.telephony.TelephonyManager;
 
-import com.titanzhang.BroadcastReceiver.PhoneStateReceiver;
+import com.titanzhang.android.AutoBT.BroadcastReceiver.PhoneStateReceiver;
 
 public class PhoneStateManager extends AbstractBaseManager {
 	private static PhoneStateManager s_instance = new PhoneStateManager();

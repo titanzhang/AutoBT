@@ -1,4 +1,4 @@
-package com.titanzhang;
+package com.titanzhang.android.AutoBT;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-import com.titanzhang.Services.MainService;
-import com.titanzhang.common.AutoBTUtil;
+import com.titanzhang.R;
+import com.titanzhang.android.AutoBT.Services.MainService;
+import com.titanzhang.android.AutoBT.common.AutoBTUtil;
 
 public class AutoBTSettingsActivity extends Activity {
 

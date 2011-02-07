@@ -1,10 +1,10 @@
-package com.titanzhang.BroadcastReceiver.Manager;
+package com.titanzhang.android.AutoBT.BroadcastReceiver.Manager;
 
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.titanzhang.BroadcastReceiver.CallAnswerReceiver;
+import com.titanzhang.android.AutoBT.BroadcastReceiver.CallAnswerReceiver;
 
 public class CallAnswerManager extends AbstractBaseManager {
 	private static CallAnswerManager s_instance = new CallAnswerManager();
